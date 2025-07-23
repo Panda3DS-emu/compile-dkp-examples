@@ -20,6 +20,11 @@ jobs:
           python3 --version
           python3 -m pip install --upgrade pip setuptools
 
+      - name: Clone and compile gba-examples
+        run: |
+          git clone --recursive https://github.com/devkitPro/gba-examples gba-examples
+          find gba-examples -type f -name Makefile -execdir make \;
+
       - name: Clone and compile nds-examples
         run: |
           git clone --recursive https://github.com/devkitPro/nds-examples nds-examples
@@ -29,6 +34,12 @@ jobs:
         run: |
           git clone --recursive https://github.com/devkitPro/3ds-examples 3ds-examples
           find 3ds-examples -type f -name Makefile -execdir make \;
+  
+      - name: Upload GBA binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: Source & Binaries (GBA)
+          path: nds-examples
 
       - name: Upload NDS binaries
         uses: actions/upload-artifact@v4
