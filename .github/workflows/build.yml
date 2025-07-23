@@ -30,10 +30,16 @@ jobs:
           git clone --recursive https://github.com/devkitPro/3ds-examples 3ds-examples
           find 3ds-examples -type f -name Makefile -execdir make \;
 
-      - name: Upload binaries
+      - name: Upload NDS binaries
         uses: actions/upload-artifact@v4
         with:
-          name: Source & Binaries (DS/3DS)
+          name: Source & Binaries (NDS)
+          path: nds-examples
+
+      - name: Upload 3DS binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: Source & Binaries (3DS)
           path: 3ds-examples
 
   build-gc-wii:
@@ -53,10 +59,21 @@ jobs:
         run: |
           git clone --recursive https://github.com/devkitPro/gamecube-examples gamecube-examples
           find gamecube-examples -type f -name Makefile -execdir make \;
+    
+      - name: Clone and compile wii-examples
+        run: |
+          git clone --recursive https://github.com/devkitPro/wii-examples wii-examples
+          find wii-examples -type f -name Makefile -execdir make \;
 
-      - name: Upload binaries
+      - name: Upload GameCube binaries
         uses: actions/upload-artifact@v4
         with:
-          name: Source & Binaries
+          name: Source & Binaries (GameCube)
           path: gamecube-examples
+
+      - name: Upload Wii binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: Source & Binaries (Wii)
+          path: wii-examples
         
