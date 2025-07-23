@@ -23,17 +23,17 @@ jobs:
       - name: Clone and compile gba-examples
         run: |
           git clone --recursive https://github.com/devkitPro/gba-examples gba-examples
-          find gba-examples -type f -name Makefile -execdir make \;
+          make -C gba-examples
 
       - name: Clone and compile nds-examples
         run: |
           git clone --recursive https://github.com/devkitPro/nds-examples nds-examples
-          find nds-examples -type f -name Makefile -execdir make \;
+          make -C nds-examples
 
       - name: Clone and compile 3ds-examples
         run: |
           git clone --recursive https://github.com/devkitPro/3ds-examples 3ds-examples
-          find 3ds-examples -type f -name Makefile -execdir make \;
+          make -C 3ds-examples
   
       - name: Upload GBA binaries
         uses: actions/upload-artifact@v4
@@ -69,12 +69,12 @@ jobs:
       - name: Clone and compile gamecube-examples
         run: |
           git clone --recursive https://github.com/devkitPro/gamecube-examples gamecube-examples
-          find gamecube-examples -type f -name Makefile -execdir make \;
+          make -C gamecube-examples
     
       - name: Clone and compile wii-examples
         run: |
           git clone --recursive https://github.com/devkitPro/wii-examples wii-examples
-          find wii-examples -type f -name Makefile -execdir make \;
+          make -C wii-examples
 
       - name: Upload GameCube binaries
         uses: actions/upload-artifact@v4
